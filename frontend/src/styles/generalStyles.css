@@ -1,0 +1,192 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Noto Sans TC', sans-serif;
+   
+}
+/* CSS HEADER */
+header{
+    
+}
+
+.mr-auto {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dropdown-toggle::after {
+    display: none;
+}
+
+@media (max-width :500px) {
+    .mr-auto {
+        display: flex;
+        flex-direction: column;
+    }
+
+    p{
+        margin: 0 10px;
+        text-align: justify;
+    }
+  
+}
+
+#navbarOrden {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+#orden {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+#loginId {
+    width: 50px;
+}
+
+header ul {
+    display: flex;
+}
+
+ul li {
+    list-style-type: none;
+}
+
+ul li a {
+    text-decoration: none;
+    list-style-type: none;
+    margin: 0 10px
+}
+
+/* Css Buscador */
+
+#Buscador {
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+#main1 {
+    display: flex;
+justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    height: 80vh;
+
+
+
+}
+
+
+#logoHeader{
+   
+}
+
+
+.filas {
+    border: 3px solid red;
+    margin: 0;
+    padding: 0;
+}
+
+.columnas {
+    border: 2px solid black;
+    padding: 0;
+}
+
+
+#titulo{
+display: none !important
+ 
+}
+#footer{
+    height: 20vh;
+    width: 100%;
+
+}
+
+
+
+#flechita:hover{
+    cursor: pointer;
+}
+@media (max-width :1000px){
+    #botones{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .mr-auto {
+       display: flex;
+       flex-direction: row;
+    }
+    .mr-auto div{
+        margin: 0 10px;
+    }
+    .nav-link{
+        margin: 0 5px;
+    }
+  
+  #logoHeader{
+      display: block;
+      width: 250px;
+  }
+  #titulo{
+      display: flex !important;
+      justify-content: center !important;
+
+  }
+  #Buscador1{
+    display: none !important;
+}
+
+    
+}
+
+#Buscador1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+@media (max-width: 740px){
+  #col1{
+      display: none;
+  }
+  #col2{
+      width: 100%;
+      margin: 0;
+  }
+  #footer{
+      margin: 0;
+      font-size: 20px;
+  }
+  .icons{
+    width: 10px;
+  }
+
+
+
+
+  
+}
+
+.contaier-fluid{
+    padding: 0;
+}
+
+.row{
+    margin: 0;
+
+}
+
