@@ -28,7 +28,12 @@
   
 }
 
-
+.carousel-control-next-icon{
+  margin-left: 120px;
+}
+.carousel-control-prev-icon{
+  margin-right: 80px;
+}
 
 #contenedorCarr {
   height: 100%;

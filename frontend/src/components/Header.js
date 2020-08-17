@@ -1,6 +1,6 @@
 import React from "react"
 import img from "../imagenes/LoginImg.png"
-import { Navbar, Button, Nav, NavDropdown, FormControl, Form } from "react-bootstrap"
+import { Navbar, Button, Nav, NavDropdown, FormControl, Form,Dropdown } from "react-bootstrap"
 
 
 
@@ -13,31 +13,33 @@ function Header() {
             <header>
 
 
-                <Navbar  expand="lg">
-                    <div id="navbarOrden">
-                        <div id = "botones">
-                          
-                            <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                            <Navbar.Collapse id="basic-navbar-nav">
-                                <Nav className="mr-auto">
-                                    <NavDropdown title={<img src={img} alt="Login" id="loginId"></img>} id="basic-nav-dropdown">
-                                        <NavDropdown.Item href="#">Create account</NavDropdown.Item>
-                                        <NavDropdown.Item href="#">Log in</NavDropdown.Item>
+       
 
-                                    </NavDropdown>
-                          
-                                    <Nav.Link href="#1">Home</Nav.Link>
-                                    <Nav.Link href="#2">About</Nav.Link>
-                                    <Nav.Link href="#3">Contact</Nav.Link>
-                             
+                    <div id="botones">
 
-                                </Nav>
-                            </Navbar.Collapse>
+       
+                        <NavDropdown title={<img src={img} alt="Login" id="loginId"></img>} id="basic-nav-dropdown" expand="sm">
+                            <NavDropdown.Item href="#">Create account</NavDropdown.Item>
+                            <NavDropdown.Item href="#">Log in</NavDropdown.Item>
+
+                        </NavDropdown>
                             
-                        </div>
-            
+                <Dropdown>
+                    <Dropdown.Toggle  id="dropdown-basic" variant="warning">
+                        Menu
+  </Dropdown.Toggle>
+
+                    <Dropdown.Menu>
+                        <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+                        <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+                        <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                    </Dropdown.Menu>
+                </Dropdown>
+
                     </div>
-                </Navbar>
+
+
+
 
             </header>
 

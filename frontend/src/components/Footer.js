@@ -12,7 +12,7 @@ function Footer() {
 
     return (
         <div id="footer" style={{display:"flex", justifyContent:"space-evenly", alignItems:"center"}}>
-            <div>
+            <div id ="col2">
                 
                 <div style={{ marginTop: "15px" }}> @ 2020 Cristian Suarez</div>
                 <div><img src={img1} style={{ width: "50px", marginTop: "15px" }} className="icons"></img>

@@ -1,0 +1,2 @@
+cambiar menu hamburguesa a la derecha sacar el login dentro del menu hamburguesa
+cambiar foto de seul  y arreglar footer decentrado

@@ -8,14 +8,15 @@ body{
    
 }
 /* CSS HEADER */
-header{
-    
-}
 
 .mr-auto {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+.navbar-collapse{
+    flex-basis: 0 !important;
+    flex-grow: 0 !important;
 }
 
 .dropdown-toggle::after {
@@ -24,21 +25,34 @@ header{
 
 @media (max-width :500px) {
     .mr-auto {
-        display: flex;
-        flex-direction: column;
+   display: flex;
+   justify-content: start !important;
     }
 
     p{
         margin: 0 10px;
         text-align: justify;
     }
+    header{
+        width: 125vw;
+     }
+     .navbar-collapse{
+         flex-basis: 0 !important;
+         flex-grow: 0 !important;
+     }
+     #botones{
+        display: flex;
+        justify-content: start !important;
+        align-items: center;
+    }
+
   
 }
 
-#navbarOrden {
+#botones{
     display: flex;
-    justify-content: space-between;
-    width: 100%;
+    justify-content: space-around !important;
+    align-items: center;
 }
 
 #orden {
@@ -87,10 +101,9 @@ justify-content: space-around;
 }
 
 
-#logoHeader{
-   
+#botones{
+    width: 100%;
 }
-
 
 .filas {
     border: 3px solid red;
@@ -128,6 +141,7 @@ display: none !important
     .mr-auto {
        display: flex;
        flex-direction: row;
+       
     }
     .mr-auto div{
         margin: 0 10px;
@@ -188,5 +202,11 @@ display: none !important
 .row{
     margin: 0;
 
+}
+
+#col2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 

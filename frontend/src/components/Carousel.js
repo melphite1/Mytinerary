@@ -10,7 +10,7 @@ function Carousel1() {
     const ciudades3 = ["Shangai", "Taipei", "Tokio", "Yakarta"]
     return (
 
-        <Carousel className="carousel" interval={1000000}>
+        <Carousel className="carousel" interval={2000}>
 
             <Carousel.Item>
 
@@ -22,7 +22,7 @@ function Carousel1() {
                                 <div
                                     id="contenedorImg"
                                     style={{ backgroundImage: `url(${fotoCiudad})`, display: "flex", alignItems: "center", fontSize:"45px" }}
-                                >            <div id="nombreCiudad"><p style={{ margin: "0", padding: "0", color: "white" }}>{ciudad}</p></div></div>
+                                >            <div id="nombreCiudad"><p style={{ margin: "0", padding: "0", color: "#F1F3AE" }}>{ciudad}</p></div></div>
 
 
                             </>)
@@ -42,7 +42,7 @@ function Carousel1() {
                                 <div
                                     id="contenedorImg"
                                     style={{ backgroundImage: `url(${fotoCiudad})`, display: "flex", alignItems: "center", fontSize:"45px" }}
-                                >            <div id="nombreCiudad"><p style={{ margin: "0", padding: "0", color: "white" }}>{ciudad}</p></div></div>
+                                >            <div id="nombreCiudad"><p style={{ margin: "0", padding: "0", color: "#F1F3AE" }}>{ciudad}</p></div></div>
 
 
                             </>)
@@ -62,7 +62,7 @@ function Carousel1() {
                                 <div
                                     id="contenedorImg"
                                     style={{ backgroundImage: `url(${fotoCiudad})`, display: "flex", alignItems: "center", fontSize:"45px" }}
-                                >            <div id="nombreCiudad"><p style={{ margin: "0", padding: "0", color: "white" }}>{ciudad}</p></div></div>
+                                >            <div id="nombreCiudad"><p style={{ margin: "0", padding: "0", color: "#F1F3AE" }}>{ciudad}</p></div></div>
 
 
                             </>)
