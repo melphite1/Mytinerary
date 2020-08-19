@@ -1,6 +1,7 @@
 import React from "react"
 import img from "../imagenes/LoginImg.png"
 import { Navbar, Button, Nav, NavDropdown, FormControl, Form,Dropdown } from "react-bootstrap"
+import { NavLink} from "react-router-dom";
 
 
 
@@ -30,9 +31,9 @@ function Header() {
   </Dropdown.Toggle>
 
                     <Dropdown.Menu>
-                        <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                        <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                        <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                        <Dropdown.Item ><NavLink to="/Home">Home</NavLink></Dropdown.Item>
+                        <Dropdown.Item ><NavLink  to="/Cities">Cities</NavLink></Dropdown.Item>
+                   
                     </Dropdown.Menu>
                 </Dropdown>
 
