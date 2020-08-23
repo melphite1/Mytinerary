@@ -1,7 +1,8 @@
 import React from "react"
 import img from "../imagenes/LoginImg.png"
-import { Navbar, Button, Nav, NavDropdown, FormControl, Form,Dropdown } from "react-bootstrap"
-import { NavLink} from "react-router-dom";
+import { Navbar, Nav, NavDropdown, } from "react-bootstrap"
+import { NavLink } from "react-router-dom";
+
 
 
 
@@ -14,30 +15,31 @@ function Header() {
             <header>
 
 
-       
 
-                    <div id="botones">
 
-       
-                        <NavDropdown title={<img src={img} alt="Login" id="loginId"></img>} id="basic-nav-dropdown" expand="sm">
-                            <NavDropdown.Item href="#">Create account</NavDropdown.Item>
-                            <NavDropdown.Item href="#">Log in</NavDropdown.Item>
+                <div id="botones">
+                    <Navbar  expand="lg">
+                        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                        <Navbar.Collapse id="basic-navbar-nav">
+                            <Nav className="mr-auto">
+                                <Nav.Link ><NavLink to="/Home">Home</NavLink></Nav.Link>
+                                <Nav.Link ><NavLink to="/Cities">Cities</NavLink></Nav.Link>
+                        
+                            </Nav>
 
-                        </NavDropdown>
-                            
-                <Dropdown>
-                    <Dropdown.Toggle  id="dropdown-basic" variant="warning">
-                        Menu
-  </Dropdown.Toggle>
+                        </Navbar.Collapse>
 
-                    <Dropdown.Menu>
-                        <Dropdown.Item ><NavLink to="/Home">Home</NavLink></Dropdown.Item>
-                        <Dropdown.Item ><NavLink  to="/Cities">Cities</NavLink></Dropdown.Item>
-                   
-                    </Dropdown.Menu>
-                </Dropdown>
+                    </Navbar>
 
-                    </div>
+
+                    <NavDropdown title={<img src={img} alt="Login" id="loginId"></img>} id="basic-nav-dropdown" expand="sm">
+                        <NavDropdown.Item href="#">Create account</NavDropdown.Item>
+                        <NavDropdown.Item href="#">Log in</NavDropdown.Item>
+
+                    </NavDropdown>
+
+
+                </div>
 
 
 

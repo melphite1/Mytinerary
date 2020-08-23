@@ -33,18 +33,7 @@ body{
         margin: 0 10px;
         text-align: justify;
     }
-    header{
-        width: 125vw;
-     }
-     .navbar-collapse{
-         flex-basis: 0 !important;
-         flex-grow: 0 !important;
-     }
-     #botones{
-        display: flex;
-        justify-content: start !important;
-        align-items: center;
-    }
+
 
   
 }
@@ -122,7 +111,7 @@ display: none !important
  
 }
 #footer{
-    height: 20vh;
+    height: 15vh;
     width: 100%;
 
 }
@@ -159,8 +148,15 @@ display: none !important
       justify-content: center !important;
 
   }
-  #Buscador1{
-    display: none !important;
+  #Buscador1 p{
+    font-size: 20px !important;
+    margin-bottom: 15px;
+
+}
+#Buscador1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
     
@@ -170,6 +166,9 @@ display: none !important
     display: flex;
     justify-content: center;
     align-items: center;
+
+
+
 }
 
 

@@ -4,8 +4,8 @@ import "../styles/Carousel.css"
 
 function Carousel1() {
     const ciudades = [
-        ["London", "Chicago", "LosAngeles", "NuevaYork"],
-        ["Osaka", "Paris", "SaoPaulo", "Seul"],
+        ["London", "Sao Paulo" , `Los Angeles`, `Nueva York`],
+        ["Osaka", "Paris", "Chicago", "Seul"],
         ["Shangai", "Taipei", "Tokio", "Yakarta"]
     ]
 
@@ -15,13 +15,17 @@ function Carousel1() {
 
             {ciudades.map(conjunto => {
                 return (
+                    
                     <Carousel.Item>
                         <div id="contenedorCarr">
-                            {conjunto.map(ciudad => {
-                                const fotoCiudad = require(`../imagenes/ImagLugares/${ciudad}.jpg`)
+
+                            {conjunto.map(ciudad=> {
+                            
+                           
+                                const fotoCiudad = require(`../imagenes/ImagLugares/${ciudad.replace(" ","-")}.jpg`)
                                 return (
 
-                                    <div id="contenedorImg" style={{ backgroundImage: `url(${fotoCiudad})`, display: "flex", alignItems: "center", fontSize: "45px" }}>   <div id="nombreCiudad"><p style={{ margin: "0", padding: "0", color: "#F1F3AE" }}>{ciudad}</p></div></div>
+                                    <div id="contenedorImg" style={{ backgroundImage: `url(${fotoCiudad})`, display: "flex", alignItems: "center", fontSize: "50px"}}>   <div id="nombreCiudad"><p style={{ margin: "0", padding: "0", color: "#F1F3AE" }}>{ciudad}</p></div></div>
                                 )
                             })}
                         </div>
