@@ -1,7 +1,9 @@
 #main2{
     display: flex;
     justify-content: center;
-    height: 80vh;
+    height: 100vh;
+
+
 
 
     }
@@ -10,19 +12,41 @@
     #search{
         margin-top: 30px;
         font-size: 20px;
-        
+        width: 20%;
         background-color: white;
         height: 5vh;
         display: flex;
         align-items: center;
         justify-content: center;
         padding: 10px;
-        
+
 
  
 
     }
-
+    @media (max-width: 1600px){
+        #search{
+            margin-top: 30px;
+            font-size: 20px;
+            width: 100%;
+            background-color: white;
+            height: 5vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+    
+    
+     
+    
+        }
+        }
+      
+    #sombraX{
+        -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+        -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+        box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75)
+    }
     input{
         border: none;
         

@@ -8,6 +8,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import fondo from "../imagenes/fondo2.jpg"
 import Ciudad from "../components/Ciudad"
+import { NavLink } from "react-router-dom"
+
 
 
 
@@ -39,43 +41,64 @@ class Cities extends React.Component {
     capturoValor = e => {
 
         const valorCapturado = e.target.value
-        const filtrado = this.state.ciudades.filter(ciudad => ciudad.nameCity.toLowerCase().indexOf(valorCapturado.trim().toLowerCase()) ? valorCapturado === ciudad.nameCity[0] : null !== -1)
+        const filtrado = this.state.ciudades.filter(ciudad => ciudad.nameCity.toLowerCase().indexOf(valorCapturado.trim().toLowerCase()) == 0)
 
-        this.setState({
-            ciudadesFiltradas: filtrado,
 
-        })
+        if (filtrado == 0) {
+            this.setState({
+                ciudadesFiltradas: ["vacio"],
+
+            })
+        } else {
+            this.setState({
+                ciudadesFiltradas: filtrado,
+
+            })
+        }
 
 
 
     }
+
     render() {
-        console.log(this.state.ciudades)
         const element = <FontAwesomeIcon icon={faSearch} />
+
         return (
 
             <>
+
                 <body style={{ backgroundImage: `url(${backGround})` }}>
                     <Header />
                     <Logo />
-                    <main id="main2" style={{ backgroundImage: `url(${fondo})`, backgroundSize: "cover", backgroundPosition: "center", display: "flex", flexDirection: "column", justifyContent:"start", height:"80%" }}>
+
+                    <main id="main2" style={{ backgroundImage: `url(${fondo})`, backgroundSize: "cover", backgroundPosition: "center", display: "flex", flexDirection: "column", justifyContent: "start", alignItems: "center", minHeight: "80vh", height: "80%" }}>
                         <div id="search">
                             <div style={{ marginRight: "10px" }}>{element}</div>
                             <input type="text" id="name" name="name" placeholder="Where do you want to travel ?" onChange={this.capturoValor}></input>
                         </div>
-                        <div style={{width:"100%", height:"80%", display:"flex", flexDirection:"row"}}>
-                            <ul style={{ display:"flex", flexDirection:"row", flexWrap:"wrap", justifyContent:"center"}}>
+                        <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "row", justifyContent: "center", alignItems: "center" }}>
+
+
+                            <ul style={{ display: "flex", flexDirection: "row", flexWrap: "wrap", justifyContent: "start", height: "100%", alignItems: "center" }}>
+
 
                                 {this.state.ciudadesFiltradas.map(ciudad => {
 
                                     return (
                                         <>
-                                            <Ciudad ciudad={ciudad} />
+
+                                            <div style={{ display: "flex", flexDirection: "column", flexWrap: "wrap", alignItems: "center", justifyContent: "center" }} >
+                                            <NavLink to={`itinerary/${ciudad._id }`}><Ciudad ciudad={ciudad} /></NavLink>
+                                            </div>
+
                                         </>
+
+
 
                                     )
                                 })}
                             </ul>
+
                         </div>
 
 

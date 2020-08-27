@@ -4,6 +4,7 @@ import "./styles/generalStyles.css"
 import Home from "./pages/Home"
 import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
 import Cities from "./pages/Cities";
+import Itinerary from "./pages/Itinerary";
 
 
 
@@ -24,6 +25,7 @@ class App extends React.Component {
         <Switch>
           <Route path="/Home" component={Home} />
           <Route path="/Cities" component={Cities} />
+          <Route path ="/Itinerary/:id" component={Itinerary}/>
           <Redirect to="/Home" />
         </Switch>
 

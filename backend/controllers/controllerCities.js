@@ -6,8 +6,17 @@ const controllerCities = {
             const lista =  await City.find()
         // devolver  al front end  la lista  de cities  de la base de datos 
         res.json({
-            succes: true,
+            success: true,
             ciudades: lista
+
+        })
+    },
+    getCity:  async (req, res) => {
+        // pedirle base de datos lista de cities
+            const ciudadBuscada =  await City.findOne({_id: req.params.id})
+        // devolver  al front end  la lista  de cities  de la base de datos 
+        res.json({
+                ciudad : ciudadBuscada
 
         })
     },
@@ -21,7 +30,7 @@ const controllerCities = {
 
 
         // validar datos 
-        const nuevaCiudad = new Ciudad({
+        const nuevaCiudad = new City({
             nameCity:nameCity,
             nameCountry:nameCountry,
             url:url
@@ -30,7 +39,7 @@ const controllerCities = {
         nuevaCiudad.save()
             .then(city => {
                 res.json({
-                    succes: true, city: city
+                    success: true, city: city
                 })
             })
             .catch(error => {

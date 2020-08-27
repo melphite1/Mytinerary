@@ -1,0 +1,35 @@
+.sombra{
+    -webkit-box-shadow: -1px 24px 25px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px 24px 25px 0px rgba(0,0,0,0.75);
+    box-shadow: -1px 24px 25px 0px rgba(0,0,0,0.75);
+}
+
+
+#main{
+
+    display: flex;
+    justify-content: center;
+    width: 90%;
+    height: auto;
+    min-height: 40vh;
+
+    
+}
+
+#contenedor{
+    border: 1px solid black;
+    margin: 3%;
+    background-color: beige;
+
+}
+#contenedorVacio{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    border: 1px solid black;
+    margin: 3%;
+    background-color: beige;
+    height: 100%;
+    
+}

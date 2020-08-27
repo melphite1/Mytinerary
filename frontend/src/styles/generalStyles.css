@@ -131,6 +131,7 @@ display: none !important
        display: flex;
        flex-direction: row;
        
+    
     }
     .mr-auto div{
         margin: 0 10px;
@@ -166,6 +167,7 @@ display: none !important
     display: flex;
     justify-content: center;
     align-items: center;
+
 
 
 
