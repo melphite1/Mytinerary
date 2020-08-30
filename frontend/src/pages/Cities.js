@@ -6,7 +6,6 @@ import backGround from "../imagenes/fondo.jpg"
 import "../styles/cities.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
-import fondo from "../imagenes/fondo2.jpg"
 import Ciudad from "../components/Ciudad"
 import { NavLink } from "react-router-dom"
 
@@ -71,7 +70,7 @@ class Cities extends React.Component {
                     <Header />
                     <Logo />
 
-                    <main id="main2" style={{ backgroundImage: `url(${fondo})`, backgroundSize: "cover", backgroundPosition: "center", display: "flex", flexDirection: "column", justifyContent: "start", alignItems: "center", minHeight: "80vh", height: "80%" }}>
+                    <main id="main2" style={{ backgroundSize: "cover", backgroundPosition: "center", display: "flex", flexDirection: "column", justifyContent: "start", alignItems: "center", minHeight: "80vh", height: "80%" }}>
                         <div id="search">
                             <div style={{ marginRight: "10px" }}>{element}</div>
                             <input type="text" id="name" name="name" placeholder="Where do you want to travel ?" onChange={this.capturoValor}></input>
@@ -88,7 +87,7 @@ class Cities extends React.Component {
                                         <>
 
                                             <div style={{ display: "flex", flexDirection: "column", flexWrap: "wrap", alignItems: "center", justifyContent: "center" }} >
-                                            <NavLink to={`itinerary/${ciudad._id }`}><Ciudad ciudad={ciudad} /></NavLink>
+                                            <NavLink to={`itinerary/${ciudad._id }`} activeClassName="selected"><Ciudad ciudad={ciudad} /></NavLink>
                                             </div>
 
                                         </>

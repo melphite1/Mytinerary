@@ -2,6 +2,11 @@
     -webkit-box-shadow: -1px 24px 25px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: -1px 24px 25px 0px rgba(0,0,0,0.75);
     box-shadow: -1px 24px 25px 0px rgba(0,0,0,0.75);
+
+}
+
+.sombra1{
+    font-family: 'Cabin', sans-serif !important
 }
 
 
@@ -9,7 +14,7 @@
 
     display: flex;
     justify-content: center;
-    width: 90%;
+    width: 100%;
     height: auto;
     min-height: 40vh;
 
@@ -19,7 +24,8 @@
 #contenedor{
     border: 1px solid black;
     margin: 3%;
-    background-color: beige;
+    background-color: white;
+    
 
 }
 #contenedorVacio{
@@ -29,7 +35,45 @@
     font-size: 40px;
     border: 1px solid black;
     margin: 3%;
-    background-color: beige;
+    background-color: white;
     height: 100%;
     
 }
+
+.informacionITI{
+   margin: 0 10px;
+   font-size: 30px;
+}
+
+@media (max-width: 1100px){
+    #headerIT #imagenIT{
+     width: 100% !important;
+     height: 100% !important;
+    }
+
+    #tituloIT{
+        font-size: 50px !important;
+    }
+    #logoIT{
+        display: none;
+    }
+    #tituloITIT{
+        font-size: 30px !important;
+    }
+
+    #apilar{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    #imagenIT{
+        width: 100% !important;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+  }
+
+
+ 
