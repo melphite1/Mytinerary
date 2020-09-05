@@ -33,8 +33,8 @@ function Header() {
 
 
                     <NavDropdown title={<img src={img} alt="Login" id="loginId"></img>} id="basic-nav-dropdown" expand="sm">
-                        <NavDropdown.Item href="#">Create account</NavDropdown.Item>
-                        <NavDropdown.Item href="#">Log in</NavDropdown.Item>
+                        <NavDropdown.Item ><NavLink to="/Sign-In">Login</NavLink></NavDropdown.Item>
+                        <NavDropdown.Item ><NavLink to="/Sign-Up">Create Account</NavLink></NavDropdown.Item>
 
                     </NavDropdown>
 

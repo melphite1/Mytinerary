@@ -14,6 +14,7 @@ const controllerCities = {
     getCity:  async (req, res) => {
         // pedirle base de datos lista de cities
             const ciudadBuscada =  await City.findOne({_id: req.params.id})
+
         // devolver  al front end  la lista  de cities  de la base de datos 
         res.json({
                 ciudad : ciudadBuscada

@@ -8,31 +8,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import Ciudad from "../components/Ciudad"
 import { NavLink } from "react-router-dom"
+import { connect } from "react-redux"
+import citiesActions from "../redux/actions/ActionsgetCities"
 
 
 
 
 class Cities extends React.Component {
-    state = {
-        ciudades: [],
-        ciudadesFiltradas: [],
 
-    }
 
     componentDidMount() {
-        fetch("http://localhost:4000/api/cities")
-            .then(response => response.json())
-            .then(data => {
-                this.setState({
-                    ciudades: data.ciudades,
-                    ciudadesFiltradas: data.ciudades
-
-
-
-                })
-
-            }
-            )
+        this.props.listCities()
 
 
     }
@@ -40,20 +26,7 @@ class Cities extends React.Component {
     capturoValor = e => {
 
         const valorCapturado = e.target.value
-        const filtrado = this.state.ciudades.filter(ciudad => ciudad.nameCity.toLowerCase().indexOf(valorCapturado.trim().toLowerCase()) == 0)
-
-
-        if (filtrado == 0) {
-            this.setState({
-                ciudadesFiltradas: ["vacio"],
-
-            })
-        } else {
-            this.setState({
-                ciudadesFiltradas: filtrado,
-
-            })
-        }
+        this.props.filteredCities(valorCapturado)
 
 
 
@@ -61,12 +34,26 @@ class Cities extends React.Component {
 
     render() {
         const element = <FontAwesomeIcon icon={faSearch} />
+        console.log(this.props)
 
+        const noCities = () => {
+            if (this.props.listaCiudades.listaCiudadesFiltradas.length == 0) {
+                return (
+                    <>
+                        <div style={{ width: "100%", height: "100%", display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column" }}>
+                            <h1 style={{ color: "black" }}>NO CITY FOUND</h1><img src={require("../imagenes/urban.png")}></img>
+                        </div>
+           
+
+                    </>
+                )
+            }
+        }
         return (
 
             <>
 
-                <body style={{ backgroundImage: `url(${backGround})` }}>
+                <body style={{ backgroundImage: `url(${backGround})`, backgroundAttachment: "fixed" }}>
                     <Header />
                     <Logo />
 
@@ -76,18 +63,20 @@ class Cities extends React.Component {
                             <input type="text" id="name" name="name" placeholder="Where do you want to travel ?" onChange={this.capturoValor}></input>
                         </div>
                         <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "row", justifyContent: "center", alignItems: "center" }}>
-
+                        {noCities()}
 
                             <ul style={{ display: "flex", flexDirection: "row", flexWrap: "wrap", justifyContent: "start", height: "100%", alignItems: "center" }}>
 
 
-                                {this.state.ciudadesFiltradas.map(ciudad => {
-
+                                {this.props.listaCiudades.listaCiudadesFiltradas.map(ciudad => {
+                                  
                                     return (
                                         <>
 
+
+                                         
                                             <div style={{ display: "flex", flexDirection: "column", flexWrap: "wrap", alignItems: "center", justifyContent: "center" }} >
-                                            <NavLink to={`itinerary/${ciudad._id }`} activeClassName="selected"><Ciudad ciudad={ciudad} /></NavLink>
+                                                <NavLink to={`itinerary/${ciudad._id}`} activeClassName="selected"><Ciudad ciudad={ciudad} /></NavLink>
                                             </div>
 
                                         </>
@@ -108,6 +97,15 @@ class Cities extends React.Component {
         )
     }
 }
+const mapStateToProps = state => {
+    return {
+        listaCiudades: state.cityRed
+    }
+}
 
+const mapDispatchToProps = {
+    listCities: citiesActions.listaCiudades,
+    filteredCities: citiesActions.filtrarCiudades
+}
 
-export default Cities
+export default connect(mapStateToProps, mapDispatchToProps)(Cities)

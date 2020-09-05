@@ -1,22 +1,29 @@
 import React, { Component } from 'react'
-import { Button } from 'react-bootstrap'
+import axios from "axios"
+
+
 
 export default class Activities extends Component {
   state = {
+    activities: []
+  }
 
-    mostrar: false
+ async componentDidMount(){
+  const idItinerario = this.props.props.itinerario._id
+  const respuesta = await axios.post("http://localhost:4000/api/activities", {id: idItinerario})
+  const activities = respuesta.data.oneActivity
 
+  this.setState({
+    activities: activities
+  })
 }
-  render() {
-    const mostrar = () => {
 
-      this.setState({
-        mostrar: !this.state.mostrar
-      })
-    }
+  render() {
+    console.log(this.state.activities)
+
     return (
       <>
-        <div style={{ backgroundColor: "white", display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column"}}>{this.state.mostrar && <div><h1>Hoal</h1></div>}<Button onClick={mostrar}>{this.state.mostrar ? "View less" : "View more"} </Button></div>
+       <div><h1>hola</h1></div>
       </>
     )
   }

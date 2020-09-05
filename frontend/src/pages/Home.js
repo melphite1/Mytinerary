@@ -23,7 +23,7 @@ class Home extends React.Component {
   render() {
     return (
       <>
-        <body style={{backgroundImage:`url(${backGround})`}}>
+        <body style={{backgroundImage:`url(${backGround})`,backgroundAttachment:"fixed"}}>
         <Header/>
         <Logo/>
           <main id="main1">

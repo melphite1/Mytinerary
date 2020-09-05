@@ -1,23 +1,10 @@
-
 import React, { Component } from 'react'
 
-import { NavLink } from "react-router-dom"
+
 
 
 export default class Ciudad extends Component {
     render() {
-
-        if (this.props.ciudad == ["vacio"]) {
-            return (
-
-                <>
-                <NavLink to="/">    <div style={{width:"100%", height:"100%", display:"flex", justifyContent:"center", alignItems:"center", flexDirection:"column"}}>
-                      <h1 style={{color:"black"}}>NO CITY FOUND</h1><img src={require("../imagenes/urban.png")}></img>
-                    </div></NavLink>
-           
-                </>
-            )
-        } else if (this.props.ciudad !== []) {
             return (
 
                 <>
@@ -30,7 +17,7 @@ export default class Ciudad extends Component {
 
                 </>
             )
-        }
+        
 
     }
 }

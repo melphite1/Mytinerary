@@ -1,0 +1,36 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.singUpContainer{
+display: flex;
+flex-direction: column;
+text-align: center;
+align-items: center ;
+margin: 5vh 5vw;
+border:1px solid black;
+min-height: 70vh;
+}
+
+.singUpContainer input {
+    width: 30%;
+    text-align: center;
+    margin-top: 3vh;
+    height: 4vh;
+    border: 1px solid black;
+}
+.singUpContainer label{
+    margin-top: 2vh;
+}
+
+
+.singUpContainer button{
+    height: 4vh;
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+    width: 5vw;
+    background: none;
+    border: 1px solid black
+
+}
