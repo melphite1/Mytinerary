@@ -32,5 +32,7 @@ rutas.route("/activities")
 rutas.route("/userRegister")
 .post(validator.validateData, usuarioController.nuevoUsuario)
 
+rutas.route("/login")
+.post(usuarioController.loguearUsuario)
 
 module.exports = rutas

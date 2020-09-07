@@ -21,12 +21,33 @@ const usuarioController = {
            res.json({ success: true, user})
         }
 
+    },
 
 
-    
+    loguearUsuario: async (req, res) => {
+        const {username, password} = req.body
 
-    
+        const userExist = await User.findOne({username})
 
+        if(!userExist){
+            res.json({
+                success:false, mensaje:"Usuario y/o contraseña incorrectos"
+            })
+        } else {
+            const passwordMatches =  bcryptjs.compareSync(password, userExist.password)
+
+            if(!passwordMatches){
+                res.json({
+                    success:false, mensaje:"Usuario y/o contraseña incorrectos"
+                })
+            } else {
+                res.json({
+                    success: true, user: userExist 
+                })
+            }
+
+
+        }
 
     }
 

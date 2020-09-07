@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import { connect } from "react-redux"
+import usuarioActions from '../redux/actions/ActionUser';
 
 
-const SignIn = () => {
+
+const SignIn = (props) => {
 
     const [loginUser, setloginUser] = useState({
         username: " ", password: " "
@@ -16,13 +19,35 @@ const SignIn = () => {
         })
 
     }
-    const enviarInfo = e => {
+    const validacionDatos = (objeto)  => {
+        let resultado = true
+        Object.values(objeto).map(campos => {
+          if (campos === "") {
+            resultado = false
+          }
+        })
+    
+        return resultado
+    
+      }
+    const   enviarInfo = async e => {
         e.preventDefault()
-        console.log(loginUser)
-    }
+        if(validacionDatos(loginUser) === true){
+       await props.loguear(loginUser)
+        } else {
+          alert("Hay campos sin completar")
+        }
+    
+    
+      }
+
+ if(props.usuarios.name !== ""){
+    props.history.push("/")
+ }
 
     return (
         <>
+
             <Header />
             <div className="singUpContainer">
                 <h1>Entrar A mi cuenta</h1>
@@ -30,9 +55,18 @@ const SignIn = () => {
                 <input type="password" placeholder="Password" name="password" onChange={CapturarValor}></input>
                 <button onClick={enviarInfo}>Login</button>
             </div>
-            <Footer/>
+            <Footer />
         </>
     );
 }
+const mapStateToProps = state => {
+    return {
+        usuarios: state.userRed
+    }
+}
 
-export default SignIn
+const mapDispatchToProps = {
+    loguear: usuarioActions.loguearUsuario
+
+}
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn)
