@@ -20,7 +20,7 @@ import { connect } from "react-redux"
 class Home extends React.Component {
 
   render() {
-    console.log(this.props)
+   
     return (
       <>
         <body style={{backgroundImage:`url(${backGround})`,backgroundAttachment:"fixed"}}>

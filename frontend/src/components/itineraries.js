@@ -1,10 +1,15 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Activities from "../components/Activities"
-export default class Itineraries extends Component {
+import { connect } from "react-redux"
+import usuarioActions from '../redux/actions/ActionUser'
+import {Button} from "react-bootstrap"
+
+class Itineraries extends React.Component {
 
     state = {
 
-        mostrar: false
+        mostrar: false,
+        like: false
 
     }
 
@@ -20,6 +25,32 @@ export default class Itineraries extends Component {
             })
 
         }
+
+        const likearDislikear = async () => {
+
+            if (this.state.like === false) {
+
+                const username = this.props.usuarios.username
+                const iditi = this.props.itinerario._id
+                const respuesta = await this.props.likear(iditi, username)
+
+                this.setState({
+                    like: !this.state.like
+                })
+            } else if (this.state.like === true) {
+                const username = this.props.usuarios.username
+                const iditi = this.props.itinerario._id
+                const respuesta = await this.props.dislikear(iditi, username)
+                this.setState({
+                    like: !this.state.like
+                })
+            }
+
+        }
+      
+
+
+
         var renderizoPrecio = ""
         const precio = this.props.itinerario.price
 
@@ -47,7 +78,6 @@ export default class Itineraries extends Component {
 
 
         const props = this.props
-
         return (
             <>
                 <div id="contenedor">
@@ -72,8 +102,8 @@ export default class Itineraries extends Component {
 
                                 <div style={{ display: "flex", width: "100%", textAlign: "justify", marginLeft: "10px", justifyContent: "center", alignItems: "center" }}>
 
+                                    {!this.state.like ? <p className="informacionITI" style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}><img src={require("../imagenes/like.png")} style={{ width: "50px", cursor: "pointer" }} onClick={likearDislikear}></img> {this.props.itinerario.rating}</p> : <p className="informacionITI" style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}><img src={require("../imagenes/like2.png")} style={{ width: "50px", cursor: "pointer" }} onClick={likearDislikear}></img> {this.props.itinerario.rating}</p>}
 
-                                    <p className="informacionITI" style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}><img src={require("../imagenes/like.png")} style={{ width: "50px" }}></img> {this.props.itinerario.rating}</p>
                                     <p className="informacionITI" style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}><img src={require("../imagenes/hour.png")} style={{ width: "50px" }}></img>{this.props.itinerario.duration} Hours</p>
                                     <p className="informacionITI" style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>Price: <div>{renderizoPrecio}</div></p>
 
@@ -83,12 +113,23 @@ export default class Itineraries extends Component {
                             <div id="logoIT" style={{ marginRight: "200px" }}><img src={require("../imagenes/logoPag.jpg")} style={{ width: "250px" }}></img> </div>
                         </div>
                     </div>
-                   {this.state.mostrar &&  <Activities props ={this.props}/>}
-        <div><button onClick ={mostrar}>{this.state.mostrar ? "View less" : " View more"}</button></div>
-                   
+                    {this.state.mostrar && <Activities Activities={this.props} />}
+                    <div><Button variant="light"onClick={mostrar}>{this.state.mostrar ? "View less" : " View more"}</Button></div>
+
                 </div>
 
             </>
         )
     }
 }
+
+const mapStateToProps = state => {
+    return {
+        usuarios: state.userRed
+    }
+}
+const mapDispatchToProps = {
+    likear: usuarioActions.like,
+    dislikear: usuarioActions.dislike
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Itineraries)

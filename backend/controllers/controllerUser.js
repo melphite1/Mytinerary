@@ -1,24 +1,31 @@
 const User = require("../models/User")
 const bcryptjs = require("bcryptjs")
+const jwt = require("jsonwebtoken")
 
 const usuarioController = {
 
     nuevoUsuario :  async (req, res) => {
 
         const { name, lastname, email, username, password, picurl, country } = req.body
-        const passwordHash = bcryptjs.hashSync(password, 10)
+        const passwordHash = bcryptjs.hashSync(password.trim(), 10)
         const userExists = await User.findOne({username: username})
 
         if (userExists){
             res.json({success: false, error: "El nombre de usuario ya existe."})
         } else {
             const newUser= new User({
-                name, lastname, email, username, password: passwordHash, picurl, country
+                name: name.trim(), lastname: lastname.trim(), email: email.trim(), username: username.trim(), password: passwordHash, picurl:picurl.trim(), country
             })
 
            var user = await newUser.save()
-          
-           res.json({ success: true, user})
+          jwt.sign({...newUser}, process.env.SECRETORKEY, {}, (error, token) =>{
+              if(error){
+                  res.json({success: false, error})
+              } else {
+                res.json({success: true, token, picurl: userExist.picurl, username: userExist.username})
+              }
+          })
+
         }
 
     },
@@ -41,16 +48,23 @@ const usuarioController = {
                     success:false, mensaje:"Usuario y/o contraseña incorrectos"
                 })
             } else {
-                res.json({
-                    success: true, user: userExist 
+                jwt.sign({...userExist}, process.env.SECRETORKEY, {}, (error, token) => {
+                    if(error){
+                        res.json({success: false, error: "Ha ocurrido un error"} )
+                    }else{
+                     
+                        res.json({success: true, token, picurl: userExist.picurl, username: userExist.username})
+                    }
                 })
+    
             }
 
 
         }
 
-    }
+    },
 
+  
 
 
 

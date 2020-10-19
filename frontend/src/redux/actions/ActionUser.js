@@ -9,7 +9,11 @@ const usuarioActions = {
             } else {
                 dispatch({
                     type: "LOG_USER_TO_APP",
-                    payload: respuesta.data.user
+                    payload: {
+                        token: respuesta.data.token,
+                        username: respuesta.data.username,
+                        picurl: respuesta.data.picurl
+                    }
                 })
             }
         }
@@ -18,12 +22,19 @@ const usuarioActions = {
     loguearUsuario: usuarioALoguear => {
         return async (dispatch, getState) => {
             const respuesta = await axios.post("http://localhost:4000/api/login", usuarioALoguear)
+
             if (!respuesta.data.success) {
                 alert(respuesta.data.mensaje)
             } else {
+       
                 dispatch({
                     type: "LOG_USER_TO_APP",
-                    payload: respuesta.data.user
+                    payload: {
+                        token: respuesta.data.token,
+                        username: respuesta.data.username,
+                        picurl: respuesta.data.picurl
+                    }
+
 
                 })
 
@@ -31,13 +42,32 @@ const usuarioActions = {
         }
     },
 
-    desloguear: () =>{
-        return(dispatch, getState) =>{
+    desloguear: () => {
+        return (dispatch, getState) => {
             dispatch({
                 type: "UNLOG_USER"
             })
         }
+    },
+
+
+    like: (id, username) => {
+        return async (dispatch, getState) => {
+        const respuesta =   await axios.put("http://localhost:4000/api/like", {id : id, username: username})
+            return respuesta
+        }
+    },
+    dislike: (id, username) => {
+        return async (dispatch, getState) => {
+        const respuesta =   await axios.put("http://localhost:4000/api/dislike", {id : id, username: username})
+            return respuesta
+        }
     }
+
+
+
+
+
 }
 
 export default usuarioActions

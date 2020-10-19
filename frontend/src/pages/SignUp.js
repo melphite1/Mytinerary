@@ -4,6 +4,10 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { connect } from "react-redux"
 import usuarioActions from '../redux/actions/ActionUser'
+import "../styles/itinerarys.css"
+import backGround from "../imagenes/fondo.jpg"
+import swal from "sweetalert"
+
 
 class SignUp extends React.Component {
   state = {
@@ -54,26 +58,30 @@ class SignUp extends React.Component {
 
   }
 
-  enviarInfo = e => {
+  enviarInfo =async e => {
     e.preventDefault()
-    if(this.validacionDatos(this.state.newUser) === true){
-      this.props.crearCuenta(this.state.newUser)
-     
+    if (this.validacionDatos(this.state.newUser) === true) {
+      await this.props.crearCuenta(this.state.newUser)
+    
+
     } else {
-      alert("Hay campos sin completar")
+      swal("Hay campos sin completar");
     }
 
-      this.props.history.push("/")
 
+    if(this.props.usuarios.token !== ""){
+      this.props.history.push("/")
+   }
 
   }
-  
+
 
   render() {
- 
+    
     return (
 
       <>
+      <body style={{backgroundImage:`url(${backGround})`,backgroundAttachment:"fixed"}}>
         <Header />
         <div className="singUpContainer">
           <h1>Create account </h1>
@@ -94,15 +102,16 @@ class SignUp extends React.Component {
           <button onClick={this.enviarInfo}>Sign UP</button>
         </div>
         <Footer />
+        </body>
       </>
     )
   }
 }
 
-const   mapStateToProps = state =>{
- return{
-  usuarios: state.userRed
- }
+const mapStateToProps = state => {
+  return {
+    usuarios: state.userRed
+  }
 }
 
 const mapDispatchToProps = {

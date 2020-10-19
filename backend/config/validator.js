@@ -1,8 +1,9 @@
 const Joi = require("@hapi/joi")
 
 
+
 const validator = {
-    validateData: (req, res, next) => {
+    validateUser: (req, res, next) => {
 
         const schema = Joi.object({
             name: Joi.string().required().trim(),
@@ -18,7 +19,7 @@ const validator = {
         if (validation.error !== undefined) {
             return res.json({
                 success: false,
-                error: "Error en la validacion de datos",
+                error: "La contraseña tiene que tener mayusculas, minusculas y numeros",
                 message: validation.error
             })
         }

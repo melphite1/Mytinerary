@@ -4,7 +4,7 @@ import { Navbar, Nav, NavDropdown, } from "react-bootstrap"
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux"
 import usuarioActions from "../redux/actions/ActionUser";
-import { useEffect}from 'react';
+
 
 
 
@@ -15,6 +15,7 @@ function Header(props) {
     const logout = () => {
             props.desloguear()
     }
+
     return (
         <>
             <header>
@@ -36,7 +37,7 @@ function Header(props) {
 
                     </Navbar>
 
-                    {!props.usuarios.username
+                    {!props.usuarios.token 
                         ? (
                             <>
                                 <NavDropdown title={<img src={img} alt="Login" id="loginId"></img>} id="basic-nav-dropdown" expand="sm">
@@ -46,8 +47,8 @@ function Header(props) {
                                 </NavDropdown>
                             </>
                         )
-                        : (
-                            <NavDropdown title={<img src={props.usuarios.picurl} alt="Login" id="loginId"></img>} id="basic-nav-dropdown" expand="sm">
+                        : ( 
+                            <NavDropdown title={<img src={props.usuarios.picurl} alt="Login" id="loginId" style={{borderRadius:"15%", width:"160px"}}></img>} id="basic-nav-dropdown" expand="sm">
                                 <NavDropdown.Item ><p>Bienvenido {props.usuarios.username}</p></NavDropdown.Item>
                                 <NavDropdown.Item ><NavLink to="/"><button style={{ background: "none", borderStyle: "none" }} onClick={logout}>Log out</button></NavLink></NavDropdown.Item>
 

@@ -33,8 +33,9 @@ class Cities extends React.Component {
     }
 
     render() {
+
         const element = <FontAwesomeIcon icon={faSearch} />
-        console.log(this.props)
+
 
         const noCities = () => {
             if (this.props.listaCiudades.listaCiudadesFiltradas.length == 0) {

@@ -1,0 +1,132 @@
+import React, { useState, useEffect } from 'react'
+import axios from "axios"
+import { connect } from "react-redux"
+import ActionsItinerary from '../redux/actions/ActionsIti'
+
+const Comments = (props) => {
+
+    const [commentUsername, setComment] = useState({
+        comment: "", username: "", idComentario: ""
+    })
+
+
+    const [comentarios, setCommentarios] = useState({
+        comment: []
+    })
+
+
+
+    useEffect(() => {
+        const idItinerario = props.comments.Activities.itinerario._id
+        props.getComments(idItinerario)
+
+        setCommentarios({
+            ...comentarios,
+            comment: props.comments.Activities.itinerario.comments
+        })
+        setComment({
+            ...commentUsername,
+            username: props.usuarios.username,
+
+        })
+
+
+    }, [])
+
+    const CapturarValor = e => {
+        setComment({
+            ...commentUsername,
+            [e.target.name]: e.target.value,
+            idComentario: parseInt(Math.random() * (9999999999 - 0) + 0)
+        })
+
+    }
+    
+
+    const EnviarComment = async e => {
+        e.preventDefault()
+        if (commentUsername.comment == "") {
+            alert("Escribi algo")
+        } else {
+            const idItinerario = props.comments.Activities.itinerario._id
+            const respuesta = await axios.put("http://localhost:4000/api/itineraries", { commentAndUser: commentUsername, id: idItinerario })
+
+
+
+            if (respuesta.data.comment) {
+                alert("Hiciste un comentario")
+
+            }
+            setComment({
+                ...commentUsername,
+                comment: ""
+            })
+        }
+
+        const idItinerario = props.comments.Activities.itinerario._id
+        props.getComments(idItinerario)
+
+    }
+
+
+
+
+    const deleteComment = async e => {
+        const comentarioAborrar = e.target.value
+        console.log(comentarioAborrar)
+       const comentarioObj= props.comentRed.comments.filter( comentario => comentario.idComentario == comentarios)
+       console.log(comentarioObj)
+   
+    }
+ console.log(comentarios)
+    return (
+        <>
+            <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", width: "100%" }}>
+                <div><h1>Comments</h1></div>
+
+                <div id="cajaComentarios">
+                    {props.comentRed.comments.map(comentario => {
+                        if (props.comentRed.comments.length === 0) {
+                            return console.log("no hay comentraios")
+                        } else if (props.comentRed.comments.length !== 0) {
+
+                            return <>
+                                {comentario.username !== props.usuarios.username
+                                    ? <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+                                        <p style={{ marginBottom: "0" }}>{comentario.username}: {comentario.comment}</p>
+                                    </div>
+
+                                    : <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}><p style={{ marginBottom: "0" }}>{comentario.username}: {comentario.comment}</p>
+                                        <button>Modificar</button>
+                                        <button onClick={deleteComment}>Borrar</button>
+                                    </div>
+                                }
+
+                            </>
+                        }
+
+                    })}
+
+                </div>
+
+
+                <input type="text" style={{ textAlign: "center" }} placeholder="Leave a comment" name="comment" onChange={CapturarValor} value={commentUsername.comment}></input>
+                <button type="submit" onClick={EnviarComment}>Comment</button>
+            </div>
+        </>
+    )
+}
+const mapStateToProps = state => {
+    return {
+        usuarios: state.userRed,
+        comentRed: state.CommentsRed
+
+    }
+}
+
+const mapDispatchToProps = {
+    getComments: ActionsItinerary.ItinerarioActions,
+    deleteComent: ActionsItinerary.deleteAction
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Comments)

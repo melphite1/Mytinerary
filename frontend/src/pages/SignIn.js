@@ -3,6 +3,9 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { connect } from "react-redux"
 import usuarioActions from '../redux/actions/ActionUser';
+import "../styles/itinerarys.css"
+import backGround from "../imagenes/fondo.jpg"
+import swal from "sweetalert"
 
 
 
@@ -35,19 +38,20 @@ const SignIn = (props) => {
         if(validacionDatos(loginUser) === true){
        await props.loguear(loginUser)
         } else {
-          alert("Hay campos sin completar")
+            swal("Hay campos sin completar");
         }
     
     
       }
 
- if(props.usuarios.name !== ""){
+ if(props.usuarios.token !== ""){
     props.history.push("/")
  }
 
     return (
-        <>
 
+        <>
+ <body style={{backgroundImage:`url(${backGround})`,backgroundAttachment:"fixed"}}>
             <Header />
             <div className="singUpContainer">
                 <h1>Entrar A mi cuenta</h1>
@@ -56,6 +60,7 @@ const SignIn = (props) => {
                 <button onClick={enviarInfo}>Login</button>
             </div>
             <Footer />
+            </body>
         </>
     );
 }

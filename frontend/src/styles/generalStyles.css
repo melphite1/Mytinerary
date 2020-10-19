@@ -76,7 +76,9 @@ ul li a {
     justify-content: center;
 }
 
-
+button{
+    margin: 0 10px ;
+}
 
 #main1 {
     display: flex;
@@ -88,7 +90,6 @@ justify-content: space-around;
 
 
 }
-
 
 #botones{
     width: 100%;

@@ -7,6 +7,7 @@ import Cities from "./pages/Cities";
 import Itinerary from "./pages/Itinerary";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
+import {connect} from "react-redux"
 
 
 
@@ -19,6 +20,7 @@ import SignUp from "./pages/SignUp";
 class App extends React.Component {
 
   render() {
+
     return (
       <BrowserRouter>
 
@@ -45,6 +47,11 @@ class App extends React.Component {
 
 }
 
+const mapStateToProps = state => {
+  return {
+    usuarios: state.userRed,
+  
+  }
+}
 
-
-export default App
+export default connect (mapStateToProps, null)(App)
