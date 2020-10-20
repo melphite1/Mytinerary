@@ -7,6 +7,7 @@ import Cities from "./pages/Cities";
 import Itinerary from "./pages/Itinerary";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
+import ActionUser from "./redux/actions/ActionUser"
 import { connect } from "react-redux"
 
 
@@ -18,17 +19,20 @@ import { connect } from "react-redux"
 
 
 class App extends React.Component {
-//Protejo mis rutas mediante jsonwebToken
+  //Protejo mis rutas mediante jsonwebToken
   render() {
-
+    
+    if (localStorage.getItem("token")) {
+      this.props.forcedLogin(localStorage.getItem("token"))
+    }
     const misRutas = this.props.token
       ?
       (
         <Switch>
-            <Route path="/Home" component={Home} />
-            <Route path="/Cities" component={Cities} />
-            <Route path="/Itinerary/:id" component={Itinerary} />
-           <Redirect to="/Home" />
+          <Route path="/Home" component={Home} />
+          <Route path="/Cities" component={Cities} />
+          <Route path="/Itinerary/:id" component={Itinerary} />
+          <Redirect to="/Home" />
         </Switch>
       )
       :
@@ -46,7 +50,7 @@ class App extends React.Component {
       <BrowserRouter>
 
 
-      {misRutas}
+        {misRutas}
 
 
       </BrowserRouter>
@@ -65,5 +69,10 @@ const mapStateToProps = state => {
 
   }
 }
+const mapDispatchToProps = {
 
-export default connect(mapStateToProps, null)(App)
+  forcedLogin: ActionUser.forcedLogin
+
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)

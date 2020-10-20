@@ -41,7 +41,25 @@ console.log(respuesta)
             }
         }
     },
-
+    forcedLogin: (tokenLS) => {
+        
+        return async (dispatch, getState) => {
+            const respuesta = await axios.get("http://localhost:4000/api/tokenLS", {
+                headers: {
+                    Authorization: `Bearer ${tokenLS}`
+                }
+            })
+     
+            dispatch({
+                type: "LOG_USER_TO_APP",
+                payload: {
+                    token: tokenLS,
+                    username: respuesta.data.username,
+                    picurl: respuesta.data.picurl
+                }
+            })
+        }
+    },
     desloguear: () => {
         return (dispatch, getState) => {
             dispatch({

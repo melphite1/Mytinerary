@@ -5,6 +5,7 @@ const controllerIty = require("../controllers/controllerIty")
 const controllerActivity = require("../controllers/controllerActivity")
 const validator  = require("../config/validator")
 const usuarioController = require("../controllers/controllerUser")
+const passport = require("../config/passport")
 
 
 rutas.route("/itinerary/:id")
@@ -45,6 +46,9 @@ rutas.route("/activities")
 
 rutas.route("/userRegister")
 .post( usuarioController.nuevoUsuario)
+
+rutas.route("/tokenLS")
+.get(passport.authenticate('jwt', {session: false }), usuarioController.tokenLS)
 
 rutas.route("/login")
 .post(usuarioController.loguearUsuario)

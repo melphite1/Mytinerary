@@ -45,9 +45,7 @@ const SignIn = (props) => {
     
       }
 
- if(props.usuarios.token !== ""){
-    props.history.push("/")
- }
+ 
 
     return (
 

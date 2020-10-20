@@ -30,7 +30,13 @@ const usuarioController = {
 
     },
 
+    tokenLS: (req, res) => {
 
+        const {name, lastname, email, username, picurl, country} = req.user
+        res.json({
+            success: true, name, lastname, email, username, picurl, country
+        })
+    },
     loguearUsuario: async (req, res) => {
         const {username, password} = req.body
 
