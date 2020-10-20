@@ -1,16 +1,16 @@
 *{
     padding: 0;
     margin: 0;
-    box-sizing: border-box;
+   
 }
 .singUpContainer{
 display: flex;
 flex-direction: column;
 text-align: center;
 align-items: center ;
-margin: 5vh 5vw;
+
 border:1px solid black;
-min-height: 70vh;
+min-height: 100vh;
 }
 
 .singUpContainer input {

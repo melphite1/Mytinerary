@@ -7,6 +7,7 @@ import usuarioActions from '../redux/actions/ActionUser'
 import "../styles/itinerarys.css"
 import backGround from "../imagenes/fondo.jpg"
 import swal from "sweetalert"
+import { NavLink } from 'react-router-dom'
 
 
 class SignUp extends React.Component {
@@ -36,6 +37,7 @@ class SignUp extends React.Component {
 
     }
   }
+
   CapturarValor = e => {
     const campo = e.target.name
     const valor = e.target.value
@@ -68,21 +70,16 @@ class SignUp extends React.Component {
       swal("Hay campos sin completar");
     }
 
-
-    if(this.props.usuarios.token !== ""){
-      this.props.history.push("/")
-   }
-
   }
 
 
   render() {
-    
+    console.log(this.props)
     return (
 
       <>
       <body style={{backgroundImage:`url(${backGround})`,backgroundAttachment:"fixed"}}>
-        <Header />
+
         <div className="singUpContainer">
           <h1>Create account </h1>
 
@@ -100,6 +97,7 @@ class SignUp extends React.Component {
             })}
           </select>
           <button onClick={this.enviarInfo}>Sign UP</button>
+           <NavLink to="/Sign-In">Go to login</NavLink>
         </div>
         <Footer />
         </body>
@@ -110,7 +108,9 @@ class SignUp extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    usuarios: state.userRed
+    token: state.userRed.token,
+    username: state.userRed.username,
+    picurl: state.userRed.picurl
   }
 }
 

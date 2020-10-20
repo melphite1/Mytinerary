@@ -3,7 +3,7 @@ const usuarioActions = {
     crearCuenta: newUser => {
         return async (dispatch, getState) => {
             const respuesta = await axios.post("http://localhost:4000/api/userRegister", newUser)
-
+console.log(respuesta)
             if (!respuesta.data.success) {
                 alert(respuesta.data.error)
             } else {

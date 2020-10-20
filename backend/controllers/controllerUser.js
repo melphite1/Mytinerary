@@ -22,7 +22,7 @@ const usuarioController = {
               if(error){
                   res.json({success: false, error})
               } else {
-                res.json({success: true, token, picurl: userExist.picurl, username: userExist.username})
+                res.json({success: true, token, urlpic: newUser.picurl, username: newUser.username })
               }
           })
 

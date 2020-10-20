@@ -7,7 +7,7 @@ import Cities from "./pages/Cities";
 import Itinerary from "./pages/Itinerary";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
-import {connect} from "react-redux"
+import { connect } from "react-redux"
 
 
 
@@ -18,23 +18,35 @@ import {connect} from "react-redux"
 
 
 class App extends React.Component {
-
+//Protejo mis rutas mediante jsonwebToken
   render() {
 
+    const misRutas = this.props.token
+      ?
+      (
+        <Switch>
+            <Route path="/Home" component={Home} />
+            <Route path="/Cities" component={Cities} />
+            <Route path="/Itinerary/:id" component={Itinerary} />
+           <Redirect to="/Home" />
+        </Switch>
+      )
+      :
+      (
+        <Switch>
+          <Route path="/Sign-In" component={SignIn} />
+          <Route path="/Sign-Up" component={SignUp} />
+          <Redirect to="/Sign-In" />
+
+        </Switch>
+      )
+
     return (
+
       <BrowserRouter>
 
 
-
-        <Switch>
-          <Route path="/Home" component={Home} />
-          <Route path="/Cities" component={Cities} />
-          <Route path ="/Itinerary/:id" component={Itinerary}/>
-          <Route path="/Sign-In" component={SignIn} />
-          <Route path="/Sign-Up" component={SignUp} />
-          <Redirect to="/Home" />
-    
-        </Switch>
+      {misRutas}
 
 
       </BrowserRouter>
@@ -49,9 +61,9 @@ class App extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    usuarios: state.userRed,
-  
+    token: state.userRed.token
+
   }
 }
 
-export default connect (mapStateToProps, null)(App)
+export default connect(mapStateToProps, null)(App)

@@ -44,7 +44,7 @@ rutas.route("/activities")
 .post(controllerActivity.getAcitivy)
 
 rutas.route("/userRegister")
-.post(validator.validateData, usuarioController.nuevoUsuario)
+.post( usuarioController.nuevoUsuario)
 
 rutas.route("/login")
 .post(usuarioController.loguearUsuario)

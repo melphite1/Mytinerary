@@ -6,6 +6,7 @@ import usuarioActions from '../redux/actions/ActionUser';
 import "../styles/itinerarys.css"
 import backGround from "../imagenes/fondo.jpg"
 import swal from "sweetalert"
+import { NavLink } from 'react-router-dom'
 
 
 
@@ -52,12 +53,14 @@ const SignIn = (props) => {
 
         <>
  <body style={{backgroundImage:`url(${backGround})`,backgroundAttachment:"fixed"}}>
-            <Header />
+         
             <div className="singUpContainer">
                 <h1>Entrar A mi cuenta</h1>
                 <input type="text" placeholder="Username" name="username" onChange={CapturarValor}></input>
                 <input type="password" placeholder="Password" name="password" onChange={CapturarValor}></input>
                 <button onClick={enviarInfo}>Login</button>
+
+                <NavLink to="/Sign-Up">Go to Sign Up</NavLink>
             </div>
             <Footer />
             </body>

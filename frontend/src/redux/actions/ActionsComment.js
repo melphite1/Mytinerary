@@ -43,7 +43,7 @@ const ActionsComment = {
         return async (dispatch, getState) =>{
         const respuesta = await axios.put("http://localhost:4000/api/edditComments", {id: id, idITI: iditinerario, newComment: newComment})
             const info = respuesta.data.comments
-            console.log(info)
+          
            
             dispatch({
                 type: "COMLISTA",

@@ -4,7 +4,7 @@ const controllerIty = {
 
     getItinerarys: async (req, res) => {
         const itineraries = await itinerary.find()
-        console.log(itineraries)
+
         res.json({
             succes: true,
             itineraries: itineraries
@@ -56,7 +56,7 @@ const controllerIty = {
 
     addComment: async (req, res) => {
         const newcomment = req.body.comentario
-        console.log(req.body)
+
         const Comentarios = await itinerary.findOneAndUpdate({ _id: req.body.id }, { $push: { comments: newcomment } }, { new: true },)
 
         res.json({
@@ -64,21 +64,7 @@ const controllerIty = {
         })
     },
     modifyComment: async (req, res) => {
-        const idItinerario = req.body.idITI
-        const idComentario = req.body.id
-        const nuevoComment = req.body.newComment
-        const itinerario = await itinerary.findOne({ _id: idItinerario })
-        itinerario.comments.map(comentario => {
-            if (comentario.idComentario == idComentario) {
-                comentario.comment = nuevoComment
-            }
-        })
-
-        const nuevoComentario = await itinerary.findOneAndUpdate({ _id: idItinerario }, { comments: itinerario.comments },{ new: true })
-       console.log(nuevoComentario)
-        res.json({
-            success: true, comments: nuevoComentario.comments
-        })
+       
       
         
     },
@@ -87,7 +73,7 @@ const controllerIty = {
         const itinerario = await itinerary.findOne({ _id: idITI })
         const comFiltrado = itinerario.comments.filter(comentario => comentario.idComentario != id)
         const newComments = await itinerary.findByIdAndUpdate({ _id: idITI }, { comments: comFiltrado }, { new: true })
-        console.log(newComments.comments)
+
         res.json({
             success: true, comments: newComments.comments
         })
